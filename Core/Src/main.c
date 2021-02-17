@@ -92,7 +92,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* PD: 0, 1, 8, 9, 10, 14, 15 -> alternate function (0b10) */
-  GPIOD->MODER = 0xA56A555A;
+  GPIOD->MODER = 0xA56A9AAA;
   GPIOD->AFR[0] = 0xCCCCCCCC; /* FSMC = AF12 (0xC) */
   GPIOD->AFR[1] = 0xCCCCCCCC;
   /* PE: 7, 8, 9, 10, 11, 12, 13, 14, 15 -> alternate function (0b10) */
@@ -108,7 +108,7 @@ int main(void)
   /* control register */
   FSMC_Bank1->BTCR[0] = FSMC_BCR1_CBURSTRW | FSMC_BCR1_WAITPOL | FSMC_BCR1_BURSTEN | FSMC_BCR1_MWID_0 | FSMC_BCR1_WREN | FSMC_BCR1_MTYP_0 /* PSRAM */ | FSMC_BCR1_MBKEN;
   /* timing register */
-  //FSMC_Bank1->BTCR[1] = FSMC_BTR1_CLKDIV_0 /* div 3 */ ;
+  FSMC_Bank1->BTCR[1] = FSMC_BTR1_CLKDIV_0 /* div 3 */ ;
 
   /* USER CODE END 2 */
 
@@ -218,7 +218,7 @@ static void MX_FSMC_Init(void)
   hsram1.Init.WrapMode = FSMC_WRAP_MODE_DISABLE;
   hsram1.Init.WaitSignalActive = FSMC_WAIT_TIMING_BEFORE_WS;
   hsram1.Init.WriteOperation = FSMC_WRITE_OPERATION_DISABLE;
-  hsram1.Init.WaitSignal = FSMC_WAIT_SIGNAL_ENABLE;
+  hsram1.Init.WaitSignal = FSMC_WAIT_SIGNAL_DISABLE;
   hsram1.Init.ExtendedMode = FSMC_EXTENDED_MODE_DISABLE;
   hsram1.Init.AsynchronousWait = FSMC_ASYNCHRONOUS_WAIT_DISABLE;
   hsram1.Init.WriteBurst = FSMC_WRITE_BURST_ENABLE;
@@ -228,7 +228,7 @@ static void MX_FSMC_Init(void)
   Timing.AddressHoldTime = 15;
   Timing.DataSetupTime = 255;
   Timing.BusTurnAroundDuration = 15;
-  Timing.CLKDivision = 2;
+  Timing.CLKDivision = 16;
   Timing.DataLatency = 2;
   Timing.AccessMode = FSMC_ACCESS_MODE_A;
   /* ExtTiming */
