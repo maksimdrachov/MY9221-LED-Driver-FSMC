@@ -128,7 +128,7 @@ int main(void)
   while (1)
   {
 	  volatile uint16_t* fsmc = (uint16_t*)0x60000000;
-	  volatile uint8_t* fsmc_adr = (uint8_t*)0x60020000;
+	  volatile uint8_t* fsmc_adr = (uint8_t*)0x60040000;
 	  uint16_t w[] = {
 	          0xf00f, 0x0000, 0xf00f, 0x0000,
 	          0xf00f, 0x0000, 0xf00f, 0x0000};
@@ -137,9 +137,8 @@ int main(void)
 			  0xff, 0x00, 0xff, 0x00};
 
 	  for(uint16_t i=0; i<8; i++) {
-		  	  fsmc_adr[0] = adr[i];
+		  	  //fsmc_adr[0] = adr[i];
 	          fsmc[0] = w[i];
-	          //fsmc_adr[0] = adr[i];
 	  }
     /* USER CODE END WHILE */
 

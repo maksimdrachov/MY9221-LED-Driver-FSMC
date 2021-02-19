@@ -437,7 +437,7 @@ int main(void)
 	  volatile uint16_t* fsmc = (uint16_t*)0x60000000;
  800051c:	f04f 43c0 	mov.w	r3, #1610612736	; 0x60000000
  8000520:	623b      	str	r3, [r7, #32]
-	  volatile uint8_t* fsmc_adr = (uint8_t*)0x60020000;
+	  volatile uint8_t* fsmc_adr = (uint8_t*)0x60040000;
  8000522:	4b18      	ldr	r3, [pc, #96]	; (8000584 <main+0xbc>)
  8000524:	61fb      	str	r3, [r7, #28]
 	  uint16_t w[] = {
@@ -487,7 +487,7 @@ int main(void)
  8000578:	aaaaaaa4 	.word	0xaaaaaaa4
  800057c:	aaaa8a8a 	.word	0xaaaa8a8a
  8000580:	00081315 	.word	0x00081315
- 8000584:	60020000 	.word	0x60020000
+ 8000584:	60040000 	.word	0x60040000
  8000588:	08001a80 	.word	0x08001a80
  800058c:	08001a90 	.word	0x08001a90
 
