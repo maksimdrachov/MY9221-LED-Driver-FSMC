@@ -121,20 +121,21 @@ int main(void)
   /* timing register */
   FSMC_Bank1->BTCR[1] = FSMC_BTR1_CLKDIV_0 /* div 3 */ ;
 
+  volatile uint16_t* fsmc = (uint16_t*)0x60000000;
+  volatile uint8_t* fsmc_adr = (uint8_t*)0x60040000;
+  uint16_t w[] = {
+          0x0000, 0xfffe, 0xffff, 0x0001,
+          0x0000, 0xfffe, 0xffff, 0x0001};
+  uint8_t adr[] = {
+		  0x00,	0x00, 0x00, 0x00,
+		  0x00, 0x00, 0x00, 0x00};
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  volatile uint16_t* fsmc = (uint16_t*)0x60000000;
-	  volatile uint8_t* fsmc_adr = (uint8_t*)0x60040000;
-	  uint16_t w[] = {
-	          0xf00f, 0x0000, 0xf00f, 0x0000,
-	          0xf00f, 0x0000, 0xf00f, 0x0000};
-	  uint8_t adr[] = {
-			  0xff,	0x00, 0xff, 0x00,
-			  0xff, 0x00, 0xff, 0x00};
 
 	  for(uint16_t i=0; i<8; i++) {
 		  	  //fsmc_adr[0] = adr[i];
