@@ -42,7 +42,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+extern int Counter;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -198,6 +198,30 @@ void SysTick_Handler(void)
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32f4xx.s).                    */
 /******************************************************************************/
+
+/**
+  * @brief This function handles EXTI line0 interrupt.
+  */
+void EXTI0_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI0_IRQn 0 */
+
+  /* USER CODE END EXTI0_IRQn 0 */
+  //HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
+  /* USER CODE BEGIN EXTI0_IRQn 1 */
+  __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_0);
+  //GPIOB->ODR ^= (0b10);
+  if (Counter == 2)
+  {
+	  GPIOB->ODR ^= (0b10);
+	  Counter = 0;
+  }
+  else
+	  Counter++;
+
+
+  /* USER CODE END EXTI0_IRQn 1 */
+}
 
 /* USER CODE BEGIN 1 */
 
